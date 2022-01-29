@@ -6,4 +6,5 @@ __pycache__
 backend/media
 backend/static
 backend/secrets.json
+backend/secrets.py
 .python-version

@@ -10,10 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-
+import secrets
 from pathlib import Path
 import os, json
 from django.core.exceptions import ImproperlyConfigured
+from backend.backend.secrets import DATABASES, SECRET_KEY
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -24,19 +25,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # Secret key가 담겨있는 json 파일을 가져오기
-with open("secret.json") as file:
-    secrets = json.loads(file.read())
+# with open("secret.json") as file:
+#     secrets = json.loads(file.read())
 
 
-def get_secret(setting, secret_key=secrets):
-    try:
-        return secret_key[setting]
-    except KeyError:
-        error_msg = f"Set the {setting} environment variable."
-        raise ImproperlyConfigured(error_msg)
+# def get_secret(setting, secret_key=secrets):
+#     try:
+#         return secret_key[setting]
+#     except KeyError:
+#         error_msg = f"Set the {setting} environment variable."
+#         raise ImproperlyConfigured(error_msg)
 
 
-SECRET_KEY = get_secret("SECRET_KEY")
+# SECRET_KEY = get_secret("SECRET_KEY")
+SECRET_KEY = secrets.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -96,12 +98,13 @@ WSGI_APPLICATION = "backend.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+DATABASES = secrets.DATABASES
 
 
 # Password validation
