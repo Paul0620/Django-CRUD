@@ -10,11 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-import secrets
+from backend.secrets import DATABASES, SECRET_KEY
 from pathlib import Path
 import os, json
 from django.core.exceptions import ImproperlyConfigured
-from backend.backend.secrets import DATABASES, SECRET_KEY
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -38,7 +37,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # SECRET_KEY = get_secret("SECRET_KEY")
-SECRET_KEY = secrets.SECRET_KEY
+SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -60,8 +59,8 @@ INSTALLED_APPS = [
     "corsheaders",  # 프론트 서버와의 통신을 위한 앱
     "rest_framework",  # REST API 서버를 쉽게 만들 수 있도록 도와주는 앱
     # local apps
+    "accounts",
     # 'post',
-    # 'accounts',
 ]
 
 MIDDLEWARE = [
@@ -104,7 +103,7 @@ WSGI_APPLICATION = "backend.wsgi.application"
 #         "NAME": BASE_DIR / "db.sqlite3",
 #     }
 # }
-DATABASES = secrets.DATABASES
+DATABASES = DATABASES
 
 
 # Password validation
@@ -139,7 +138,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-AUTH_USER_MODEL = "custum_account.User"  # 관리유저로 사용할 모델을 설정한다.
+AUTH_USER_MODEL = "accounts.User"  # 관리유저로 사용할 모델을 설정한다.
 
 
 # Static files (CSS, JavaScript, Images)
