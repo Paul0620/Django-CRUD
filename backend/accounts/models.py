@@ -40,10 +40,10 @@ class User(AbstractBaseUser):
         primary_key=True, default=uuid.uuid4, editable=False
     )  # uuid 형식으로 고유키 생성
     email = models.EmailField(max_length=100, unique=True, verbose_name="이메일")
-    password = models.CharField(max_length=40, verbose_name="비밀번호")
+    password = models.CharField(max_length=100, verbose_name="비밀번호")
     nickname = models.CharField(max_length=30, unique=True, verbose_name="닉네임")
     intro = models.CharField(max_length=100, blank=True, verbose_name="자기소개")
-    image = models.ImageField(upload_to="%Y/%m/%d", verbose_name="프로필 이미지")
+    image = models.ImageField(upload_to="accounts/%Y/%m/%d", verbose_name="프로필 이미지")
     created = models.DateTimeField(auto_now_add=True, verbose_name="가입일")
     updated = models.DateTimeField(auto_now=True, verbose_name="수정일")
 
