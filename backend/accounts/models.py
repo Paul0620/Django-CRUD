@@ -20,6 +20,7 @@ class UserManager(BaseUserManager):
             nickname=nickname,
         )
 
+        # .set_password(raw_password) : 지정 암호를 암호화해서 password 필드에 저장 (save함수 호출 안함)
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -48,8 +49,8 @@ class User(AbstractBaseUser):
     image = models.ImageField(
         upload_to="accounts/%Y/%m/%d", blank=True, verbose_name="프로필 이미지"
     )
-    created = models.DateTimeField(auto_now_add=True, verbose_name="가입일")
-    updated = models.DateTimeField(auto_now=True, verbose_name="수정일")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="가입일")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="수정일")
 
     objects = UserManager()
 

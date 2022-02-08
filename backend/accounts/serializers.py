@@ -16,9 +16,6 @@ class SignupSerializer(serializers.ModelSerializer):
             nickname=validated_data["nickname"],
             password=validated_data["password"],
         )
-        # .set_password(raw_password) : 지정 암호를 암호화해서 password 필드에 저장 (save함수 호출 안함)
-        # user.set_password(validated_data["password"])
-        # user.save()
         return user
 
 
