@@ -11,7 +11,9 @@ class UserManager(BaseUserManager):
     # 일반유저 생성
     def create_user(self, email, nickname, password=None):
         if not email:
-            raise ValueError("Users must have an email address")
+            raise ValueError("Must have email.")
+        if not nickname:
+            raise ValueError("Must have nickname.")
 
         user = self.model(
             email=self.normalize_email(email),
@@ -26,7 +28,7 @@ class UserManager(BaseUserManager):
     def create_superuser(self, email, nickname, password):
         user = self.create_user(
             email,
-            nickname,
+            nickname=nickname,
             password=password,
         )
         user.is_admin = True
@@ -43,7 +45,9 @@ class User(AbstractBaseUser):
     password = models.CharField(max_length=100, verbose_name="비밀번호")
     nickname = models.CharField(max_length=30, unique=True, verbose_name="닉네임")
     intro = models.CharField(max_length=100, blank=True, verbose_name="자기소개")
-    image = models.ImageField(upload_to="accounts/%Y/%m/%d", verbose_name="프로필 이미지")
+    image = models.ImageField(
+        upload_to="accounts/%Y/%m/%d", blank=True, verbose_name="프로필 이미지"
+    )
     created = models.DateTimeField(auto_now_add=True, verbose_name="가입일")
     updated = models.DateTimeField(auto_now=True, verbose_name="수정일")
 

@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     # third apps
     "corsheaders",  # 프론트 서버와의 통신을 위한 앱
     "rest_framework",  # REST API 서버를 쉽게 만들 수 있도록 도와주는 앱
-    "knox"  # DRF의 인증을 보다 쉽게 사용할 수 있도록 도와주는 도구, https://devlog.jwgo.kr/2019/11/06/what-is-django-rest-knox/
+    "knox",  # DRF의 인증을 보다 쉽게 사용할 수 있도록 도와주는 도구, https://devlog.jwgo.kr/2019/11/06/what-is-django-rest-knox/
     # local apps
     "accounts",
     # 'post',
