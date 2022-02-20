@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     "knox",  # DRF의 인증을 보다 쉽게 사용할 수 있도록 도와주는 도구, https://devlog.jwgo.kr/2019/11/06/what-is-django-rest-knox/
     # local apps
     "accounts",
-    # 'post',
+    "posts",
 ]
 
 MIDDLEWARE = [
