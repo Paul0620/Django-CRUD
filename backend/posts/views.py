@@ -13,3 +13,11 @@ class PostViewSet(viewsets.ModelViewSet):
     # 새 object 인스턴스를 저장할 때 CreateModelMixin에 의해 호출된다.
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    # UpdateModelMixin
+    def perform_update(self, serializer):
+        serializer.save(user=self.request.user)
+
+    # DestroyModelMixin
+    def perform_destroy(self, instance):
+        instance.delete()
