@@ -15,3 +15,20 @@ class Post(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="게시물 작성일")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="게시물 수정일")
+
+    def __str__(self):
+        return self.title
+
+
+class Comment(models.Model):
+    id = models.AutoField(primary_key=True, null=False, blank=False)
+    post = models.ForeignKey(Post, null=False, blank=False, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User, null=False, blank=False, on_delete=models.CASCADE, verbose_name="댓글 작성자"
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="댓글 작성일")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="댓글 수정일")
+    comment = models.TextField(verbose_name="댓글 내용")
+
+    def __str__(self):
+        return self.comment
