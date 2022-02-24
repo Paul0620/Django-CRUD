@@ -22,3 +22,7 @@ class PostViewSet(viewsets.ModelViewSet):
     # DestroyModelMixin
     def perform_destroy(self, instance):
         instance.delete()
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    pass
