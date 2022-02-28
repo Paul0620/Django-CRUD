@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from backend.secrets import DATABASES, SECRET_KEY
 from pathlib import Path
 import os, json
-from django.core.exceptions import ImproperlyConfigured
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     # third apps
     "corsheaders",  # 프론트 서버와의 통신을 위한 앱
     "rest_framework",  # REST API 서버를 쉽게 만들 수 있도록 도와주는 앱
-    "knox",  # DRF의 인증을 보다 쉽게 사용할 수 있도록 도와주는 도구, https://devlog.jwgo.kr/2019/11/06/what-is-django-rest-knox/
     # local apps
     "accounts",
     "posts",
@@ -155,3 +154,23 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# restframework 기본설정
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [  # 기본값이 AllowAny인데 인증이 필요하다고 설정
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": (  # restframework jwt 사용시 설정
+        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ),
+}
+
+# 토큰 리프래쉬 허용하기위한 설정
+JWT_AUTH = {
+    "JWT_SECRET_KEY": SECRET_KEY,
+    "JWT_ALGORITHM": "HS256",
+    "JWT_ALLOW_REFRESH": True,
+    "JWT_EXPIRATION_DELTA": timedelta(days=7),
+    "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=20),
+}

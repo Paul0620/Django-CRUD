@@ -20,9 +20,9 @@ class SignupView(CreateAPIView):
 
 
 # 회원정보
-# class UserView(RetrieveAPIView):
-#     queryset = get_user_model().objects.all()
-#     serializer_class = UserSerializer
+class UserView(RetrieveAPIView):
+    queryset = get_user_model().objects.all()
+    serializer_class = UserSerializer
 
-#     def get(self, request, *args, **kwargs):
-#         return self.retrieve(request, *args, **kwargs)
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
