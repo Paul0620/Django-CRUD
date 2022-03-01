@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     # third apps
     "corsheaders",  # 프론트 서버와의 통신을 위한 앱
     "rest_framework",  # REST API 서버를 쉽게 만들 수 있도록 도와주는 앱
+    "rest_framework_simplejwt",  # JWT 앱
     # local apps
     "accounts",
     "posts",
@@ -161,16 +162,16 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated",
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": (  # restframework jwt 사용시 설정
-        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ),
 }
 
 # 토큰 리프래쉬 허용하기위한 설정
-JWT_AUTH = {
-    "JWT_SECRET_KEY": SECRET_KEY,
-    "JWT_ALGORITHM": "HS256",
-    "JWT_ALLOW_REFRESH": True,
-    "JWT_EXPIRATION_DELTA": timedelta(days=7),
-    "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=20),
+SIMPLE_JWT = {
+    "SIGNING_KEY": SECRET_KEY,
+    "ALGORITHM": "HS256",
+    "BLACKLIST_AFTER_ROTATION": True,
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=14),
 }

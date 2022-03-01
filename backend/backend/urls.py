@@ -17,11 +17,20 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView,
+)
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include("posts.urls")),
-    path("accounts/", include("accounts.urls")),
+    path("api/users/", include("accounts.urls")),
+    path("api/token/", TokenObtainPairView.as_view()),  # jwt 토큰 발행
+    path("api/token/verify/", TokenVerifyView.as_view()),  # jwt 토큰 유효성 검증
+    path("api/token/refresh/", TokenRefreshView.as_view()),  # jwt 토큰 갱신
 ]
 
 
