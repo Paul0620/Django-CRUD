@@ -7,9 +7,9 @@ import Signup from "./Signup";
 function Routes() {
   return (
     <>
-      <Route component={Login} />
-      <Route component={Signup} />
-      <Route component={Profile} />
+      {/* <Route exact path={matchMedia.url + "/login"} component={Login} />
+      <Route exact path={matchMedia.url + "/signup"} component={Signup} />
+      <Route exact path={matchMedia.url + "/profile"} component={Profile} /> */}
     </>
   );
 }

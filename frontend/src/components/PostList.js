@@ -1,7 +1,8 @@
 import React from "react";
+import Post from "./Post";
 
 const PostList = () => {
-  return <div></div>;
+  return <Post />;
 };
 
 export default PostList;
