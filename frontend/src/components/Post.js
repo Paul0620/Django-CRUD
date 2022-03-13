@@ -22,7 +22,16 @@ function Post({ post }) {
         </div>
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
-          <p className="card-text">{content}</p>
+          <p
+            className="card-text"
+            style={{
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {content}
+          </p>
           <Link href="#" className="btn btn-primary" style={{ float: "right" }}>
             자세히
           </Link>

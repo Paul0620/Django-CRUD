@@ -1,14 +1,13 @@
 import React from "react";
 import AppHeader from "./AppHeader";
 import AppFooter from "./AppFooter";
-import PostList from "./PostList";
 
-function AppLayout() {
+function AppLayout({ children }) {
   return (
     <div className="app">
       <AppHeader />
-      {/* <div className="contents">content</div> */}
-      <PostList />
+      {/* postList */}
+      <div className="contents">{children}</div>
       <AppFooter />
     </div>
   );
