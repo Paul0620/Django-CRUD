@@ -19,6 +19,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ["-id"]
+
 
 class Comment(models.Model):
     id = models.AutoField(primary_key=True, null=False, blank=False)
@@ -32,3 +35,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
+
+    class Meta:
+        ordering = ["-id"]
