@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button } from "antd";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { axiosInstance } from "api";
 import { useAppContext } from "store";
 
 function Post({ post }) {
@@ -10,22 +10,36 @@ function Post({ post }) {
   } = useAppContext();
 
   const { id, user, title, content, image } = post;
-  const { nickname } = user;
+  // const { nickname } = user;
 
   const history = useHistory();
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState({ visible: false });
 
+  // 자세히보기
   const showModal = () => {
-    setIsModalVisible(true);
+    setIsModalVisible({ visible: true });
   };
 
-  const handleOk = () => {
-    setIsModalVisible(false);
+  // 게시물 수정
+  const updateClick = ({ post }) => {
+    history.push({
+      pathname: "/posts/update",
+      state: post,
+    });
   };
 
-  const handleCancel = () => {
-    setIsModalVisible(false);
+  // 게시물 삭제
+  const deleteClick = async ({ id }) => {
+    const headers = { Authorization: `JWT ${jwtToken}` };
+    try {
+      const response = await axiosInstance.delete(`/api/posts/${id}/`, {
+        headers,
+      });
+      window.location.replace("/");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -45,13 +59,19 @@ function Post({ post }) {
           {user}
           {user && (
             <div>
-              <Button type="text" size="small" style={{ color: "skyblue" }}>
+              <Button
+                type="text"
+                size="small"
+                style={{ color: "skyblue" }}
+                onClick={() => updateClick({ post })}
+              >
                 수정
               </Button>
               <Button
                 type="text"
                 size="small"
                 style={{ paddingLeft: "0", color: "orangered" }}
+                onClick={() => deleteClick({ id })}
               >
                 삭제
               </Button>
@@ -87,7 +107,11 @@ function Post({ post }) {
           </Button>
         </div>
       </div>
-      <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+      <Modal
+        visible={isModalVisible.visible}
+        footer={null}
+        onCancel={() => setIsModalVisible({ visible: false })}
+      >
         <h6>{user}</h6>
         <div style={{ marginTop: "8px", marginBottom: "25px" }}>
           <img src={image} className="card-img-top" />

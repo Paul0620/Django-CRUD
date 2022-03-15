@@ -7,11 +7,6 @@ from rest_framework import viewsets, permissions, authentication
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    # 유저 인증에 대한 정보를 토큰으로 인증하기 위한 설정
-    authentication_classes = [
-        authentication.TokenAuthentication,
-        authentication.SessionAuthentication,
-    ]
     # 권한설정, 접속유저에 따른 권한 설정
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 

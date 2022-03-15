@@ -8,13 +8,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "antd/dist/antd.css";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <AppProvider>
-        <Root />
-      </AppProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <BrowserRouter>
+    <AppProvider>
+      <Root />
+    </AppProvider>
+  </BrowserRouter>,
+  // </React.StrictMode>,
   document.getElementById("root")
 );
 
