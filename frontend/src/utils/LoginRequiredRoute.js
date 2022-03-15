@@ -21,7 +21,7 @@ function LoginRequiredRoute({ component: Component, ...kwargs }) {
           return (
             <Redirect
               to={{
-                pathname: "/accounts/Login",
+                pathname: "/accounts/login",
                 state: { from: props.location },
               }}
             />

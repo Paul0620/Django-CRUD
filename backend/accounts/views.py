@@ -18,10 +18,10 @@ class UserViewSet(viewsets.ModelViewSet):
 
 # Create your views here.
 # 회원가입
-# class SignupView(CreateAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = SignupSerializer
-#     permission_classes = [AllowAny]
+class SignupView(CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = SignupSerializer
+    permission_classes = [AllowAny]
 
 
 # # 회원정보

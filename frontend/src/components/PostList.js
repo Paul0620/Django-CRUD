@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance, useAxios } from "api";
 import { useAppContext } from "store";
-import { Alert } from "antd";
+import { Alert, Pagination } from "antd";
 import Post from "./Post";
 
 function PostList() {
@@ -10,6 +10,9 @@ function PostList() {
   } = useAppContext();
 
   const [postList, setPostList] = useState([]);
+  const [limit, setLimit] = useState(6);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
 
   const headers = { Authorization: `JWT ${jwtToken}` };
 
@@ -22,18 +25,35 @@ function PostList() {
     setPostList(originPostList);
   }, [originPostList]);
 
+  const handleChange = (page) => {
+    setPage(page);
+  };
+
   return (
-    <>
-      <div className="container py-3">
-        <div className="row">
-          {postList && postList.lengh === 0 && (
-            <Alert type="warning" message="포스팅이 없습니다. :-(" />
-          )}
-          {postList &&
-            postList.map((post, index) => <Post post={post} key={index} />)}
-        </div>
+    <div className="container py-3">
+      <div className="row">
+        {postList && postList.length === 0 && (
+          <Alert type="warning" message="포스팅이 없습니다. :-(" />
+        )}
+        {postList &&
+          postList
+            .slice(offset, offset + limit)
+            .map((post, index) => <Post post={post} key={index} />)}
+
+        {postList && postList.length > 1 && (
+          <Pagination
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+            defaultCurrent={1}
+            total={postList.length}
+            pageSize={limit}
+            onChange={handleChange}
+          />
+        )}
       </div>
-    </>
+    </div>
   );
 }
 

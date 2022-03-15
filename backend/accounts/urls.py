@@ -19,7 +19,7 @@ user_detail = views.UserViewSet.as_view(
 )
 
 urlpatterns = [
-    path("", user_list),
+    path("signup/", views.SignupView.as_view(), name="회원가입"),
     path("<uuid:pk>/", user_detail),
     # path("", views.SignupView.as_view()),
     # path("<uuid:pk>/", views.UserDetailView.as_view()),
