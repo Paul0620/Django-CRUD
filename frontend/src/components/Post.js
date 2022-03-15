@@ -3,14 +3,19 @@ import { Modal, Button } from "antd";
 import { useHistory } from "react-router-dom";
 import { axiosInstance } from "api";
 import { useAppContext } from "store";
+import jwt from "jwt-decode";
 
 function Post({ post }) {
   const {
     store: { jwtToken },
   } = useAppContext();
 
+  // 토큰 유저 정보
+  const decoded = jwt(jwtToken);
+  const userEmail = decoded.email;
+
   const { id, user, title, content, image } = post;
-  // const { nickname } = user;
+  const { email, nickname } = user;
 
   const history = useHistory();
 
@@ -56,8 +61,8 @@ function Post({ post }) {
             height: "39px",
           }}
         >
-          {user}
-          {user && (
+          {nickname}
+          {email === userEmail && (
             <div>
               <Button
                 type="text"
@@ -112,7 +117,7 @@ function Post({ post }) {
         footer={null}
         onCancel={() => setIsModalVisible({ visible: false })}
       >
-        <h6>{user}</h6>
+        <h6>{nickname}</h6>
         <div style={{ marginTop: "8px", marginBottom: "25px" }}>
           <img src={image} className="card-img-top" />
         </div>

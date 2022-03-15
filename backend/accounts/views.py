@@ -7,14 +7,14 @@ from rest_framework.generics import (
     DestroyAPIView,
     get_object_or_404,
 )
+from rest_framework.response import Response
 from .models import User
 from .serializers import SignupSerializer, UserSerializer
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
 
 # Create your views here.
 # 회원가입
@@ -24,13 +24,13 @@ class SignupView(CreateAPIView):
     permission_classes = [AllowAny]
 
 
-# # 회원정보
-# class UserDetailView(RetrieveAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = UserSerializer
+# 회원정도
+class UserView(RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
-#     def get(self, request, *args, **kwargs):
-#         return self.retrieve(request, *args, **kwargs)
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
 
 
 # # 회원수정
