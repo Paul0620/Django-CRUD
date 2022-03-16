@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "antd";
 import PostNewForm from "components/PostNewForm";
 
-export default function PostNew() {
+function PostNew() {
   return (
     <div className="PostNew">
       <Card title="New Post">
@@ -11,3 +11,5 @@ export default function PostNew() {
     </div>
   );
 }
+
+export default PostNew;

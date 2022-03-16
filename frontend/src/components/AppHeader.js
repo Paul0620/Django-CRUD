@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useAppContext, deleteToken } from "store";
 import { Button } from "antd";
+import axios from "axios";
 
 function AppHeader() {
   const history = useHistory();
@@ -29,7 +30,7 @@ function AppHeader() {
   };
 
   // 프로필
-  const profileHandle = () => {
+  const profileHandle = async () => {
     history.push("/accounts/profile");
   };
 
