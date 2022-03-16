@@ -30,7 +30,7 @@ function AppHeader() {
   };
 
   // 프로필
-  const profileHandle = async () => {
+  const profileHandle = () => {
     history.push("/accounts/profile");
   };
 

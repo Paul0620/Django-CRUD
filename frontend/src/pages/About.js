@@ -1,7 +1,8 @@
+import { Card } from "antd";
 import React from "react";
 
 function About() {
-  return <div>About</div>;
+  return <Card title="About" />;
 }
 
 export default About;
