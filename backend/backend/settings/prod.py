@@ -6,7 +6,7 @@ DEBUG = False
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "database-1",
+        "NAME": "crud",
         "USER": "admin",
         "PASSWORD": "qkfka0620",
         "HOST": "database-1.cpyk6hitqndq.ap-northeast-2.rds.amazonaws.com",
