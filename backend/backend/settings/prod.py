@@ -2,7 +2,7 @@ from .common import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = [".ap-northeast-2.compute.amazonaws.com"]
+ALLOWED_HOSTS = [".ap-northeast-2.compute.amazonaws.com", ".crud.codes"]
 
 # DB MySQL로 설정
 DATABASES = {
