@@ -13,3 +13,14 @@ INTERNAL_IPS = ["127.0.0.1"]
 
 # 리엑트로 api를 넘기기 위한 설정
 CORS_ORIGIN_WHITELIST = ["http://localhost:3000"]
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "crud",
+        "USER": "root",
+        "PASSWORD": "0620",
+        "HOST": "localhost",
+        "PORT": "3306",
+    }
+}

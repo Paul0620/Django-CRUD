@@ -103,7 +103,6 @@ WSGI_APPLICATION = "backend.wsgi.application"
 #         "NAME": BASE_DIR / "db.sqlite3",
 #     }
 # }
-DATABASES = DATABASES
 
 
 # Password validation
