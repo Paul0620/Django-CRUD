@@ -2,6 +2,8 @@ from .common import *
 
 DEBUG = False
 
+ALLOWED_HOSTS = [".ap-northeast-2.compute.amazonaws.com"]
+
 # DB MySQL로 설정
 DATABASES = {
     "default": {
@@ -13,3 +15,5 @@ DATABASES = {
         "PORT": "3306",
     }
 }
+
+WSGI_APPLICATION = "backend.wsgi.application"

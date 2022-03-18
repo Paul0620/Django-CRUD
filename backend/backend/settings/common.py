@@ -42,7 +42,7 @@ SECRET_KEY = SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".ap-northeast-2.compute.amazonaws.com"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -91,8 +91,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = "backend.wsgi.application"
 
 
 # Database
