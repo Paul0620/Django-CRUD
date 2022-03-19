@@ -39,3 +39,4 @@
 - Python 3.9.7
 - Django 3.2.9
 - djangorestframework 3.13.1
+- mysql 8.0.27
