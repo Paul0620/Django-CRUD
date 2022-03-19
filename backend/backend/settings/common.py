@@ -159,11 +159,6 @@ AUTH_USER_MODEL = "accounts.User"  # 관리유저로 사용할 모델을 설정�
 # MEDIA_URL = "/media/"
 # MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-STATIC_DIR = os.path.join(BASE_DIR, "static")
-STATICFILES_DIRS = [
-    STATIC_DIR,
-]
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
