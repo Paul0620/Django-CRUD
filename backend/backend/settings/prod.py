@@ -1,5 +1,5 @@
 from .common import *
-from backend.secrets import AWS_SECRET_ACCESS_KEY
+from backend.secrets import *
 
 DEBUG = False
 
@@ -20,13 +20,15 @@ DATABASES = {
 WSGI_APPLICATION = "backend.wsgi.application"
 
 # 기본스토리지는 s3로 설정하기 위해
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+DEFAULT_FILE_STORAGE = "config.storages.MediaStorage"
+STATICFILES_STORAGE = "config.storages.StaticStorage"
+MEDIAFILES_LOCATION = "media"
+STATICFILES_LOCATION = "static"
 
 
-AWS_ACCESS_KEY_ID = "AKIAYJ45ZEDKHQ2U27KJ"
+AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
-AWS_STORAGE_BUCKET_NAME = "mycrud-bucket"
+AWS_STORAGE_BUCKET_NAME = AWS_STORAGE_BUCKET_NAME
 
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = [
