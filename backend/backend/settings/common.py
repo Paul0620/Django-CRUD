@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     # third apps
     "corsheaders",  # 프론트 서버와의 통신을 위한 앱
     "rest_framework",  # REST API 서버를 쉽게 만들 수 있도록 도와주는 앱
+    "storages",
     # local apps
     "accounts",
     "posts",
