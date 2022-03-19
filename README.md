@@ -10,6 +10,10 @@
 - REST API 기준을 지켜 자원을 명시하기
 - 게시글 CRUD 구현
 - AWS에 배포해보기(구현중)
+  - EC2에 Django 서버 설정
+  - RDS를 활용하여 MySQL 설정
+  - DNS를 활용한 사이트 접속
+  - S3이용하여 static, media 클라우드에 저장
 
 ---
 
@@ -35,11 +39,3 @@
 - Python 3.9.7
 - Django 3.2.9
 - djangorestframework 3.13.1
-
-> 추가사항
-
-- EC2에 Django 배포
-- RDS를 활용하여 MySQL 연동
-- DNS를 이용한 접속
-
-> 동작영상
