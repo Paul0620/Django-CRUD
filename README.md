@@ -1,6 +1,6 @@
 <!-- Header -->
 
-# Django-CRUD
+# Django, React를 활용하여 게시글 CRUD기능 구현, AWS에 배포해보기
 
 <!-- Body -->
 
