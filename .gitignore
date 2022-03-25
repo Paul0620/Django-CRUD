@@ -1,9 +1,9 @@
 .vscode
 .idea
 .DS_Store
-db.sqlite3
+backend/db.sqlite3
 __pycache__
-backend/media
-backend/secrets.json
-backend/secrets.py
+backend/backend/media
+backend/backend/secrets.json
+backend/backend/secrets.py
 .python-version
