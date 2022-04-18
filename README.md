@@ -10,10 +10,10 @@
 - REST API 기준을 지켜 자원을 명시하기
 - 게시글 CRUD 구현
 - AWS에 배포해보기
-  - EC2에 Django 서버 설정([Backend](http://ec2-15-164-80-254.ap-northeast-2.compute.amazonaws.com))
+  - EC2에 Django 서버 설정
   - RDS를 활용하여 MySQL 설정
   - S3에 Django static, media 저장
-  - CloudFront, S3를 이용하여 리액트 배포([Front](https://project.crud.codes))
+  - CloudFront, S3를 이용하여 리액트 배포
   - 프론트와 백 연결하기(구현중)
 
 ---
